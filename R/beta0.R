@@ -48,5 +48,5 @@ beta0 = function(x0,x1){
   f0 = - 3 * x03 + a3 * atan((1 + 2 * x03)/ a3) - log(as.complex(x03 - 1)) + log(as.complex(1 + x03 + x03 ^ 2))/ 2
   f = Re(f1 - f0)
 
-
+  return(f)
 }
