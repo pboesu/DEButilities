@@ -2,15 +2,15 @@
 #
 
 ##
-get_tb= function(p, eb, lb=NA){
+get_tb= function(p, eb = 1, lb=NA){
 #  created at 2007/07/27 by Bas Kooijman; modified 2014/03/17, 2015/01/18
 
 ## Syntax
 # [tb, lb, info] = <../get_tb.m *get_tb*> (p, eb, lb)
 
 ## Description
-# Obtains scaled age at birth, given the scaled reserve density at birth. 
-# Divide the result by the somatic maintenance rate coefficient to arrive at age at birth. 
+# Obtains scaled age at birth, given the scaled reserve density at birth.
+# Divide the result by the somatic maintenance rate coefficient to arrive at age at birth.
 #
 # Input
 #
@@ -20,7 +20,7 @@ get_tb= function(p, eb, lb=NA){
 #
 # * eb: optional scalar with scaled reserve density at birth (default eb = 1)
 # * lb: optional scalar with scaled length at birth (default: lb is obtained from get_lb)
-#  
+#
 # Output
 #
 # * tb: scaled age at birth \tau_b = a_b k_M
@@ -34,13 +34,14 @@ get_tb= function(p, eb, lb=NA){
 ## Example of use
 # get_tb([.1;.5;.03])
 # See also <../ mydata_ue0.m *mydata_ue0*>
-  
-  if (!exists('eb')) {
-    eb = 1                   # maximum value as juvenile
-  }
-  
+
+  # replaced by definition of default value in function definition - phbs
+  #if (!exists('eb')) {
+  #  eb = 1                   # maximum value as juvenile
+  #}
+
   info = 1
-  
+
   if (!exists('lb')) {
     if (length(p) < 3){
       print('not enough input parameters, see get_lb \n')
@@ -55,20 +56,20 @@ get_tb= function(p, eb, lb=NA){
     lb=lbinfo[1]
     info=lbinfo[2]
   }
-  
+
   # unpack p
   g = p[1]  # energy investment ratio
-  
-  xb = g/ (eb + g)  # f = e_b 
+
+  xb = g/ (eb + g)  # f = e_b
   ab = 3 * g * xb^(1/ 3)/ lb  # \alpha_b
   library(pracma)
   abxb=c(ab,xb)
   tb = 3 * quad(dget_tb, xa= 1e-15, xb=xb, tol = 1.0e-12, trace = FALSE, abxb)
   return(c(tb, lb, info))
 }
-  
+
   # subfunction
-  
+
 dget_tb= function(x, abxb){
   # called by get_tb
   ab=abxb[1]
