@@ -1,8 +1,21 @@
-## get_tb
-#
 
-##
-get_tb= function(p, eb = 1, lb=NA){
+#' get_tb
+#'
+#' Obtains scaled age at birth, given the scaled reserve density at birth.
+#' Divide the result by the somatic maintenance rate coefficient to arrive at age at birth.
+#'
+#' @param p 1 or 3-vector with parameters g, k_J/ k_M, v_H^b; Last 2 values are optional in invoke call to get_lb
+#' @param eb optional scalar with scaled reserve density at birth (default eb = 1)
+#' @param lb optional scalar with scaled length at birth (default: lb is obtained from get_lb)
+#'
+#' @author Bas Kooijman
+#'
+#' @return 3-element vector containing tb: scaled age at birth tau_b = a_b k_M; lb: scalar with scaled length at birth: L_b/ L_m; info: indicator equals 1 if successful, 0 otherwise
+#' @export
+#'
+#' @examples
+#' get_tb(p = c(.1,.5,.03))
+get_tb <- function(p, eb = 1, lb=NA){
 #  created at 2007/07/27 by Bas Kooijman; modified 2014/03/17, 2015/01/18
 
 ## Syntax
@@ -42,7 +55,7 @@ get_tb= function(p, eb = 1, lb=NA){
 
   info = 1
 
-  if (!exists('lb')) {
+  if (is.na(lb)) {
     if (length(p) < 3){
       print('not enough input parameters, see get_lb \n')
       tb = NA
@@ -70,7 +83,17 @@ get_tb= function(p, eb = 1, lb=NA){
 
   # subfunction
 
-dget_tb= function(x, abxb){
+#' dget_tb
+#'
+#' Subroutine called by get_tb
+#'
+#' @param x x
+#' @param abxb abxb
+#'
+#' @return f
+#' @export
+#'
+dget_tb <- function(x, abxb){
   # called by get_tb
   ab=abxb[1]
   xb=abxb[2]
