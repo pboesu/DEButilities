@@ -1,5 +1,5 @@
 library(DEButilities)
-context("numerical equivalenmce to DEBtool_M")
+context("numerical equivalence to DEBtool_M")
 #crude test to compare example function calls with the corresponding DEBtool_M output
 
 test_that("get_tb matches DEBtool", {
