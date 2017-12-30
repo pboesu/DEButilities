@@ -74,7 +74,7 @@ get_ue0=function(p, eb = 1, lb0 = NA){
   xb = g/ (eb + g)
   uE0 = (3 * g/ (3 * g * xb^(1/ 3)/ lb - beta0(0, xb)))^3
 
-  print(paste("uE0", uE0))
+  #print(paste("uE0", uE0))
 
   return(c(uE0, lb, info))
 }

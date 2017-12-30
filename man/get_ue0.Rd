@@ -4,7 +4,7 @@
 \alias{get_ue0}
 \title{get_ue0}
 \usage{
-get_ue0(p, eb = 1, lb0 = NULL)
+get_ue0(p, eb = 1, lb0 = NA)
 }
 \arguments{
 \item{p}{1 or 3 -vector with parameters g, k_J/ k_M, v_H^b, see get_lb}
@@ -20,4 +20,8 @@ get_ue0(p, eb = 1, lb0 = NULL)
 gets initial scaled reserve.
 Obtains the initial scaled reserve for eggs given the scaled reserve density at birth.
 Specification of length at birth as third input by-passes its computation, so if you want to specify an initial value for this quantity, you should use get_lb directly.
+}
+\examples{
+g = 6; k = 6; kap = .8; uHb = .001; vHb = uHb/ (1 - kap);
+par = c(g, k, vHb);
 }

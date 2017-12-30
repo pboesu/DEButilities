@@ -11,6 +11,7 @@
 #' @author Bas Kooijman
 #'
 #' @return 3-element vector containing tb: scaled age at birth tau_b = a_b k_M; lb: scalar with scaled length at birth: L_b/ L_m; info: indicator equals 1 if successful, 0 otherwise
+#' @importFrom pracma quad
 #' @export
 #'
 #' @examples
@@ -75,7 +76,7 @@ get_tb <- function(p, eb = 1, lb=NA){
 
   xb = g/ (eb + g)  # f = e_b
   ab = 3 * g * xb^(1/ 3)/ lb  # \alpha_b
-  library(pracma)
+  #library(pracma)
   abxb=c(ab,xb)
   tb = 3 * quad(dget_tb, xa= 1e-15, xb=xb, tol = 1.0e-12, trace = FALSE, abxb)
   return(c(tb, lb, info))
