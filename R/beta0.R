@@ -1,9 +1,16 @@
-## beta0
-# particular incomplete beta function
-
-##
-#function f =
-
+#' particular incomplete beta function
+#'
+#' \deqn{B_x1(4/3,0) - B_x0(4/3,0) = \int_x0^x1 t^(4/3-1) (1-t)^(-1) dt}{B_x1(4/3,0) - B_x0(4/3,0) = int_x0^x1 t^(4/3-1) (1-t)^(-1) dt}
+#'
+#' @param x0 scalar with lower boundary for integration
+#' @param x1 scalar with upper boundary for integration
+#'
+#' @return scalar with particular incomple beta function
+#' @export
+#'
+#' @examples
+#' beta0(0.1, 0.2)
+#'
 beta0 = function(x0,x1){
   #  created 2000/08/16 by Bas Kooijman; modified 2011/04/10
 
