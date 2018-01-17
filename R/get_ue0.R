@@ -76,5 +76,5 @@ get_ue0=function(p, eb = 1, lb0 = NA){
 
   #print(paste("uE0", uE0))
 
-  return(c(uE0, lb, info))
+  return(c(uE0 = unname(uE0), lb = unname(lb), info = info))
 }

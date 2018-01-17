@@ -137,6 +137,6 @@ get_lb = function(p, eb = 1, lb0 = NA){
     warning('get_lb: no convergence of l_b')
   }
 
-  return(c(lb, info))
+  return(c(lb = unname(lb), info = info))
 
 }
