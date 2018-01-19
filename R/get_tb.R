@@ -79,7 +79,7 @@ get_tb <- function(p, eb = 1, lb=NA){
   #library(pracma)
   abxb=c(ab,xb)
   tb = 3 * quad(dget_tb, xa= 1e-15, xb=xb, tol = 1.0e-12, trace = FALSE, abxb)
-  return(c(tb, lb, info))
+  return(c(tb = unname(tb), lb = unname(lb), info = info))
 }
 
   # subfunction
