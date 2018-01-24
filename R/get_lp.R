@@ -120,5 +120,5 @@ get_lp <- function(p, f = 1, lb0 = NULL){
     }
   }
 
-  return(c(lp = unname(lp), info = unname(info)))
+  return(c(lp = unname(lp), lb = unname(lb), info = unname(info)))
 }
