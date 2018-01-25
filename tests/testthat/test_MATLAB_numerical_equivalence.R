@@ -17,5 +17,9 @@ test_that("get_ue0 matches DEBtool_M", {
 })
 
 test_that("get_lp matches DEBtool_M", {
-  expect_equal(get_lp(c(.5, .1, .1, .01, .2)), c(lp = 0.417404108769580, info = 1), tolerance = 1e-5)
+  expect_equal(get_lp(c(.5, .1, .1, .01, .2)), c(lp = 0.417404108769580, lb= 0.195043904717230, info = 1), tolerance = 1e-5)
+})
+
+test_that("get_tp matches DEBtool_M", {
+  expect_equal(get_tp(c(.5, .1, .1, .01, .2)), c(tp = 4.745724172568635, tb = 1.335121204474580, lp = 0.417404108769580, lb = 0.195043904717230, info = 1), tolerance = 1e-3)
 })
